@@ -1,0 +1,151 @@
+.pink1, br {
+    background: #E61F51;
+    color: white;
+    height: 10px;
+}
+
+.pink2, br {
+    background: #D11F52;
+    color: white;
+    height: 10px;
+}
+
+.pink3, br {
+    background: #A11641;
+    color: white;
+    height: 10px;
+}
+
+.fondo-footer {
+    background: #2D3B3F;
+    color: white;
+}
+
+.fondo-pink1 {
+    background: #E61F51;
+    color: white;
+}
+
+.fondo-pink2 {
+    background: #D11F52;
+    color: white;
+}
+
+.fondo-pink3 {
+    background: #A11641;
+    color: white;
+}
+
+#fondo-azul1 {
+    background: #0EA3C5;
+    color: white;
+    border-radius: 5px;
+    padding: 2%;
+    font-size: 120%;
+}
+
+#fondo-azul2 {
+    background: #0EA3C5;
+    color: white;
+    border-radius: 5px;
+    padding: 20% 30% 20% 30%;
+    margin-left: 10%;
+    width: 100%;
+    font-size: 120%;
+}
+
+.buscar {
+    background: #E6E6E6;
+    color: #2D3B3F;
+    width: 100%;
+    padding: 1%;
+    font-size: 120%;
+}
+
+.btn-pink1 {
+    background: #E61F51;
+    height: 100%;
+    color: white;
+    margin-left: 2%;
+}
+
+.item-box {
+    background: #FFFF;
+    margin: 2%;
+    padding: 2% 5% 2% 5%;
+    border-style: solid;
+    border-color: #F3F5F8;
+    border-style: solid;
+    border-color: #E6E6E6;
+
+}
+
+.fondo-items {
+    background: #F3F5F8;
+    padding-top: 2%;
+    margin: 0;
+}
+
+.font-primary {
+    color: #848484;
+    font-size: 150%;
+}
+
+.font-primary2 {
+    color: #848484;
+    font-size: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+.verticalLine {
+    border-left: thick solid #848484;
+    border-width: 2px;
+}
+
+.font-costo {
+    color: #418633;
+    font-size: 200%;
+}
+
+#font-costo2 {
+    color: #418633;
+    font-size: 250%;
+    border: 2px solid;
+    border-radius: 30px;
+    padding: 2%;
+    border-color: #418633;
+}
+
+.btn-green {
+    color: white;
+    background: #418633;
+    font-size: 200%;
+}
+
+.btn-green2 {
+    margin-top: 25%;
+    color: white;
+    background: #418633;
+    width: 100%;
+}
+
+.title {
+    font-size: 300%;
+    margin: 0;
+    padding: 0;
+}
+
+.font-secondary {
+    color: #848484;
+    font-size: 200%;
+    margin: 0;
+    padding: 0;
+}
+
+.font-tertiary {
+    color: black;
+    font-size: 150%;
+    padding: 0;
+    margin: 0;
+}
