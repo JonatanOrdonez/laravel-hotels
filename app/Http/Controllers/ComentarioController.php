@@ -71,8 +71,6 @@ class ComentarioController extends Controller
         }
         else{
             $suma = Comentario::all()->sum('calificacion');
-            dd($suma);
-            echo $suma;
             $promedio =  $suma / $cantidadComentarios;
             $hotel -> calificacion = $promedio;
             $hotel -> save();
