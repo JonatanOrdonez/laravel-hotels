@@ -16,13 +16,13 @@ class CreateComentariosTable extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->decimal('calificacion', 8, 2);
+            $table->decimal('calificacion', 4, 2);
             $table->string('estrellas');
             $table->string('mensaje');
-            $table->unsignedInteger('id_hotel');
-            $table->foreign('id_hotel')->references('id')->on('hoteles');
-            $table->unsignedInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->unsignedInteger('hotel_id');
+            $table->foreign('hotel_id')->references('id')->on('hoteles');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

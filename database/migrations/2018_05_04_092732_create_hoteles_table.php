@@ -21,7 +21,7 @@ class CreateHotelesTable extends Migration
             $table->string('estrellas');
             $table->string('direccion');
             $table->string('ciudad');
-            $table->decimal('calificacion', 8, 2);
+            $table->decimal('calificacion', 4, 2);
         });
     }
 

@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function comentarios()
+    {
+        return $this->hasMany('LaravelHotel\Models\Comentario');
+    }
 }

@@ -21,4 +21,9 @@ class Hotel extends Model
      * @var array
      */
     protected $fillable = ['nombre', 'costo', 'estrellas', 'direccion', 'ciudad', 'calificacion'];
+
+    public function comentarios()
+    {
+        return $this->hasMany('LaravelHotel\Models\Comentario');
+    }
 }

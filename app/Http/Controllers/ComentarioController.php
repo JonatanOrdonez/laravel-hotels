@@ -64,30 +64,29 @@ class ComentarioController extends Controller
         else{
             $calificacion = 5;
         }
-        $numComentarios = DB::table('comentarios')->where('id_hotel', $idHotel)->count();
-        if($numComentarios === 0){
+        $cantidadComentarios = Comentario::all()->count();
+        if ($cantidadComentarios === 0){
             $hotel -> calificacion = $calificacion;
             $hotel -> save();
-        }else{
-            $miCalificacion = $hotel -> calificacion;
-            $nuevaCalificacion = ($calificacion + $miCalificacion) / 2;
-            $hotel -> calificacion = $nuevaCalificacion;
+        }
+        else{
+            $suma = Comentario::all()->sum('calificacion');
+            dd($suma);
+            echo $suma;
+            $promedio =  $suma / $cantidadComentarios;
+            $hotel -> calificacion = $promedio;
             $hotel -> save();
         }
+
         Comentario::create([
             'estrellas' => $estrellas,
             'calificacion' => $calificacion,
             'mensaje' => $mensaje,
-            'id_hotel' => $idHotel,
-            'id_usuario' => $idUser,
+            'hotel_id' => $idHotel,
+            'user_id' => $idUser,
         ]);
 
-        $comentarios = DB::table('comentarios')->where('id_hotel', $idHotel)->orderBy('id', 'DESC')->paginate(5);
-        foreach ($comentarios as $comentario){
-            $comentario -> correo = User::find($comentario -> id_usuario) -> email;
-        }
-        return view('hoteles.showHotel')->with('hotel', $hotel)->with('comentarios', $comentarios);
-
+        return view('hoteles.showHotel')->with('hotel', $hotel);
     }
 
     /**
@@ -99,11 +98,11 @@ class ComentarioController extends Controller
     public function show($id)
     {
         $hotel = Hotel::find($id);
-        $comentarios = DB::table('comentarios')->where('id_hotel', $id)->orderBy('id', 'DESC')->paginate(5);
-        foreach ($comentarios as $comentario){
-            $comentario -> correo = User::find($comentario -> id_usuario) -> email;
-        }
-        return view('hoteles.showHotel')->with('hotel', $hotel)->with('comentarios', $comentarios);
+        //DB::table('comentarios')->where('id_hotel', $id)->orderBy('id', 'DESC')->paginate(5);
+        //foreach ($comentarios as $comentario){
+            //$comentario -> correo = User::find($comentario -> id_usuario) -> email;
+        //}
+        return view('hoteles.showHotel')->with('hotel', $hotel);
     }
 
     /**

@@ -18,5 +18,15 @@ class Comentario extends Model
      *
      * @var array
      */
-    protected $fillable = ['calificacion', 'mensaje', 'id_hotel', 'id_usuario', 'estrellas'];
+    protected $fillable = ['calificacion', 'mensaje', 'hotel_id', 'user_id', 'estrellas'];
+
+    public function user()
+    {
+        return $this->belongsTo('LaravelHotel\User');
+    }
+
+    public function hotel()
+    {
+        return $this->belongsTo('LaravelHotel\Models\Hotel');
+    }
 }

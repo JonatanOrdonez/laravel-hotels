@@ -55,12 +55,12 @@
             </div>
             {!! Form::close() !!}
             <div class="container">
-                @if(count($comentarios) > 0)
-                    @foreach($comentarios as $comentario)
+                @if(count($hotel->comentarios) > 0)
+                    @foreach($hotel->comentarios as $comentario)
                         <div class="item-box">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <p class="font-tertiary">{{ $comentario -> correo }}</p>
+                                    <p class="font-tertiary">{{ $comentario -> user -> email }}</p>
                                     <p class="font-primary">{{ $comentario -> mensaje }}</p>
                                 </div>
                                 <div class="col-md-2 text-right">
