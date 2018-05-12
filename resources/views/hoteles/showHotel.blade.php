@@ -70,6 +70,7 @@
 
                         </div>
                     @endforeach
+                    {{ $hotel->comentarios->links() }}
                 @endif
             </div>
         </div>
