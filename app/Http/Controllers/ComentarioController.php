@@ -96,10 +96,6 @@ class ComentarioController extends Controller
     public function show($id)
     {
         $hotel = Hotel::find($id);
-        //DB::table('comentarios')->where('id_hotel', $id)->orderBy('id', 'DESC')->paginate(5);
-        //foreach ($comentarios as $comentario){
-            //$comentario -> correo = User::find($comentario -> id_usuario) -> email;
-        //}
         return view('hoteles.showHotel')->with('hotel', $hotel);
     }
 
