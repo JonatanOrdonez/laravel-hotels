@@ -44,12 +44,22 @@
                 </div>
                 <br>
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-dismissible  alert-danger fade show">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <li>{{ $error }}</li>
+                        </div>
+
+                    @endforeach
+                @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-dismissible  alert-success fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <li>{!! session()->get('success') !!}</li>
                     </div>
                 @endif
             </div>

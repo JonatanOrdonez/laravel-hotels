@@ -32,13 +32,15 @@
                             {!! Form::text('ciudad', null, ['class'=>'form-control', 'placeholder'=>'Ingrese la ciudad del hotel']) !!}
                         </div>
                         @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-dismissible  alert-danger fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <li>{{ $error }}</li>
+                                </div>
+
+                            @endforeach
                         @endif
                         {!! Form::submit('Registrar', ['class'=>'btn btn-primary']) !!}
                         <button type="button" class="btn btn-pink1" onclick="window.location='{{ url("/home") }}'">Regresar</button>

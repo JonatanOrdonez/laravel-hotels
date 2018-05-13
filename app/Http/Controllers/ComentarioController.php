@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use LaravelHotel\User;
 use LaravelHotel\Models\Comentario;
 use phpDocumentor\Reflection\Types\Integer;
+use Illuminate\Support\Facades\Redirect;
 
 class ComentarioController extends Controller
 {
@@ -34,7 +35,7 @@ class ComentarioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,37 +44,32 @@ class ComentarioController extends Controller
             'mensaje' => 'required',
         ]);
 
-        $estrellas = $request -> estrellas;
-        $mensaje = $request -> mensaje;
-        $idHotel = $request -> hotel_inv;
-        $idUser = $request -> usr_inv;
+        $estrellas = $request->estrellas;
+        $mensaje = $request->mensaje;
+        $idHotel = $request->hotel_inv;
+        $idUser = $request->usr_inv;
         $hotel = Hotel::find($idHotel);
         $calificacion = 0;
-        if($estrellas === 'Una estrella'){
+        if ($estrellas === 'Una estrella') {
             $calificacion = 1;
-        }
-        else if($estrellas === 'Dos estrellas'){
+        } else if ($estrellas === 'Dos estrellas') {
             $calificacion = 2;
-        }
-        else if($estrellas === 'Tres estrellas'){
+        } else if ($estrellas === 'Tres estrellas') {
             $calificacion = 3;
-        }
-        else if($estrellas === 'Cuatro estrellas'){
+        } else if ($estrellas === 'Cuatro estrellas') {
             $calificacion = 4;
-        }
-        else{
+        } else {
             $calificacion = 5;
         }
         $cantidadComentarios = Comentario::all()->count();
-        if ($cantidadComentarios === 0){
-            $hotel -> calificacion = $calificacion;
-            $hotel -> save();
-        }
-        else{
+        if ($cantidadComentarios === 0) {
+            $hotel->calificacion = $calificacion;
+            $hotel->save();
+        } else {
             $suma = Comentario::all()->sum('calificacion');
-            $promedio =  $suma / $cantidadComentarios;
-            $hotel -> calificacion = $promedio;
-            $hotel -> save();
+            $promedio = $suma / $cantidadComentarios;
+            $hotel->calificacion = $promedio;
+            $hotel->save();
         }
 
         Comentario::create([
@@ -83,14 +79,13 @@ class ComentarioController extends Controller
             'hotel_id' => $idHotel,
             'user_id' => $idUser,
         ]);
-
-        return view('hoteles.showHotel')->with('hotel', $hotel);
+        return Redirect::route('comentarios.show', $idHotel)->with('success', 'Mensaje agregado correctamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -102,7 +97,7 @@ class ComentarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -113,8 +108,8 @@ class ComentarioController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -125,7 +120,7 @@ class ComentarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
