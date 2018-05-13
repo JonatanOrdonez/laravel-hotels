@@ -79,7 +79,7 @@ class ComentarioController extends Controller
             'hotel_id' => $idHotel,
             'user_id' => $idUser,
         ]);
-        return Redirect::route('comentarios.show', $idHotel)->with('success', 'Mensaje agregado correctamente.');
+        return Redirect::route('hoteles.show', $idHotel)->with('success', 'Mensaje agregado correctamente.');
     }
 
     /**
@@ -90,8 +90,7 @@ class ComentarioController extends Controller
      */
     public function show($id)
     {
-        $hotel = Hotel::find($id);
-        return view('hoteles.showHotel')->with('hotel', $hotel);
+        //
     }
 
     /**

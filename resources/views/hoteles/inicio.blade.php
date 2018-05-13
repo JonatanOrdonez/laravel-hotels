@@ -50,7 +50,7 @@
                                 <p class="text-center font-costo">${{ number_format($hotel -> costo, 2, ',', '.') }}</p>
 
                                 <p class="text-center">
-                                    <button type="button" class="btn btn-green" onclick="window.location='{{ route('comentarios.show', $hotel-> id)}}'">Ver más ></button>
+                                    <button type="button" class="btn btn-green" onclick="window.location='{{ route('hoteles.show', $hotel-> id)}}'">Ver más ></button>
                                 </p>
                             </div>
                         </div>
