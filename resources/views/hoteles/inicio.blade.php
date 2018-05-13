@@ -14,6 +14,7 @@
             {{ Form::radio('radio', true,'rnombre', ['class'=>'radio-inline']) }}<a>Buscar por nombre </a><br>
             {{ Form::radio('radio', false,'rciudads'), ['class'=>'radio-inline'] }}<a> Buscar por ciudad</a>
         </div>
+        {{ Form::reset('Clear form') }}
         {!! Form::close() !!}
         <br>
     </div>
